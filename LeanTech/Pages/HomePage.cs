@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using AventStack.ExtentReports;
+using AventStack.ExtentReports.Reporter;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,8 @@ namespace LeanTech.Pages
             this.driver = driver;
         }
 
+
+
         IWebElement linkShopCart => driver.FindElement(By.XPath(".//div[@id='shopping_cart_container']/a[@class='shopping_cart_link']"));
         IWebElement lblHeader => driver.FindElement(By.XPath(".//span[@class='title']"));
 
@@ -28,6 +32,8 @@ namespace LeanTech.Pages
         {
             linkShopCart.Click();
         }
+
+
     }
     
 }
