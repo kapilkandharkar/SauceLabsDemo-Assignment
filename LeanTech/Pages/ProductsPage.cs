@@ -17,6 +17,9 @@ namespace LeanTech.Pages
         }
 
         IWebElement selProductSort => driver.FindElement(By.XPath(".//select[@class='product_sort_container']"));
+        IWebElement lblNumOfItemsShoppingCart => driver.FindElement(By.XPath(".//span[@class='shopping_cart_badge']"));
+        IWebElement lnkShoppingCart => driver.FindElement(By.XPath(".//a[@class='shopping_cart_link']"));
+
 
         public void SortProductsBy(string sortByValue)
         {
@@ -30,6 +33,21 @@ namespace LeanTech.Pages
             btnAddToCart.Click();
         }
 
+        public void AddToCartByIndex(int index)
+        {
+            
+            if (lnkShoppingCart.Text != "")
+            {
+                index = Math.Abs(index - Int32.Parse(lnkShoppingCart.Text));
+                if(index == 0)
+                {
+                    index = 1;
+                }
+            }
+            
+            IWebElement btnAddToCart = driver.FindElement(By.XPath($"(.//button[text()='Add to cart'])[{index}]"));
+            btnAddToCart.Click();
+        }
 
     }
 }

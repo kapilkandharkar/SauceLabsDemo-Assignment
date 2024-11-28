@@ -41,11 +41,26 @@ namespace LeanTech.Pages
             txtPostalCode.SetText(postalCode);
         }
 
-        public void ClickContinue()
+        public void ClickButton(string buttonText)
         {
-            btnContinue.Click();
+            switch (buttonText.ToLower())
+            {
+                case "continue":
+                    btnContinue.Click();
+                    break;
+                case "finish":
+                    btnFinish.Click();
+                    break;
+                case "back home":
+                    btnBackToHome.Click();
+                    break;
+                case "cancel":
+                    btnCancel.Click();
+                    break;
+            }
+            
         }
-
+        
         public void ValidatePaymentInfo(string expValue)
         {
             Assert.AreEqual(expValue, lblPaymentInfo.Text);
@@ -79,10 +94,7 @@ namespace LeanTech.Pages
 
         }
 
-        public void ClickFinish()
-        {
-            btnFinish.Click();
-        }
+
 
         public void ValidateOrderCompleteHeader(string expHeaderText)
         {
@@ -96,9 +108,6 @@ namespace LeanTech.Pages
             Assert.AreEqual(expMsg, actMsg, "Order Complete Message Text NOT OK");
         }
 
-        public void ClickBackToHome()
-        {
-            btnBackToHome.Click();
-        }
+
     }
 }
